@@ -1,0 +1,61 @@
+{
+  "address": "0x2B89097ae3BA9F5ABf5FB2C69B6274455Bf2f22e",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    }
+  ],
+  "transactionHash": "0x7a006e905d29841d2c42c5555b6a7686d2e5c3d023c1ca1f4b371f97a02f47d3",
+  "receipt": {
+    "to": null,
+    "from": "0x7d994063E2C98b2F49b13418Fc3FE58c45DdcC0D",
+    "contractAddress": "0x2B89097ae3BA9F5ABf5FB2C69B6274455Bf2f22e",
+    "transactionIndex": 1,
+    "gasUsed": "67066",
+    "logsBloom": "0x00000000000000020000000000000000000000000000000000000000000000000000000000000000000000000000000000008000000000000000000000000000000000000000000000000000000000800000000000000000000100000000000000000000000000000000000000000000000000000000000080000000000000000000000000000000000000000000000000000000000000000000000000000000200000000000000020000000000000200001000000000000000000000000004000000000000000000001000000000000000000000000000000100000000000000000000000000000000000000000000000100010000000000000000000100000",
+    "blockHash": "0xb8fc93f35f608a241342527d64c6389accb084eb3de26bab040471ec0bee6980",
+    "transactionHash": "0x7a006e905d29841d2c42c5555b6a7686d2e5c3d023c1ca1f4b371f97a02f47d3",
+    "logs": [
+      {
+        "transactionIndex": 1,
+        "blockNumber": 20922104,
+        "transactionHash": "0x7a006e905d29841d2c42c5555b6a7686d2e5c3d023c1ca1f4b371f97a02f47d3",
+        "address": "0x0000000000000000000000000000000000001010",
+        "topics": [
+          "0x4dfe1bbbcf077ddc3e01291eea2d5c70c2b422b415d95645b9adcfd678cb1d63",
+          "0x0000000000000000000000000000000000000000000000000000000000001010",
+          "0x0000000000000000000000007d994063e2c98b2f49b13418fc3fe58c45ddcc0d",
+          "0x000000000000000000000000c26880a0af2ea0c7e8130e6ec47af756465452e8"
+        ],
+        "data": "0x0000000000000000000000000000000000000000000000000000f3fc146d10000000000000000000000000000000000000000000000000008bf3248cbea78cea0000000000000000000000000000000000000000000001dcbc40daa6de5354360000000000000000000000000000000000000000000000008bf23090aa3a7cea0000000000000000000000000000000000000000000001dcbc41cea2f2c06436",
+        "logIndex": 1,
+        "blockHash": "0xb8fc93f35f608a241342527d64c6389accb084eb3de26bab040471ec0bee6980"
+      }
+    ],
+    "blockNumber": 20922104,
+    "cumulativeGasUsed": "88690",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "solcInputHash": "732293e77177545c2014a425877a5c02",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/polygon/RewardManager.sol\":\"RewardManager\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/polygon/RewardManager.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\r\\npragma solidity ^0.8.4;\\r\\n\\r\\ncontract RewardManager {\\r\\n    constructor() {\\r\\n        super;\\r\\n    }\\r\\n}\\r\\n\",\"keccak256\":\"0x2f40c22cff18c29cdf5db7fde293033fe861a21d099d03642603885a284a9259\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220be0b9a820ebca7842f293e1db5ce0dfafb4920a8b3658614c44cd8652f960b6264736f6c63430008040033",
+  "deployedBytecode": "0x6080604052600080fdfea2646970667358221220be0b9a820ebca7842f293e1db5ce0dfafb4920a8b3658614c44cd8652f960b6264736f6c63430008040033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [],
+    "types": null
+  }
+}
