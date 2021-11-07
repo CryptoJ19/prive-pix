@@ -21,7 +21,7 @@ import { FractionaliseModal } from "../../modals/FractionaliseModal";
 import axios from "axios";
 import URL from "shared/functions/getURL";
 import { sanitizeIfIpfsUrl } from "shared/helpers/utils";
-import {getMySyntheticFractionalisedNFT} from "shared/services/API/SyntheticFractionalizeAPI";
+import { getMySyntheticFractionalisedNFT } from "shared/services/API/SyntheticFractionalizeAPI";
 
 // parse it to same format as fb collection
 const parseMoralisData = async (data, address, selectedChain) => {
@@ -29,7 +29,7 @@ const parseMoralisData = async (data, address, selectedChain) => {
   if (data.metadata) {
     metadata = JSON.parse(data.metadata);
   } else {
-    const tokenURI = sanitizeIfIpfsUrl(data.token_uri ?? '')
+    const tokenURI = sanitizeIfIpfsUrl(data.token_uri ?? "");
     if (tokenURI && tokenURI.startsWith("http")) {
       try {
         const { data: tokenResp } = await axios.post(`${URL()}/syntheticFractionalize/getTokenInfo`, {
@@ -153,7 +153,9 @@ const SyntheticFractionalise = ({ goBack, isSynthetic = false }) => {
           // save externally created nft to backend
           saveExternallyFetchedNfts(externallyCreatedNft);
           // set user nfts
-          const nfts = [...Object.values(pixCreatedNftMap), ...externallyCreatedNft].filter(item => !(myNFTs.map(nft => nft.NftId).includes(item.BlockchainId)));
+          const nfts = [...Object.values(pixCreatedNftMap), ...externallyCreatedNft].filter(
+            item => !myNFTs.map(nft => nft.NftId).includes(item.BlockchainId)
+          );
           setUserNFTs(nfts);
         }
         setLoadingnNFTS(false);
@@ -259,7 +261,11 @@ const SyntheticFractionalise = ({ goBack, isSynthetic = false }) => {
                                   if (i != index) nftsCopy[i].selected = false;
                                 }
                               }
-                              setSelectedNFT({ index, ...nftsCopy[index] });
+                              if (!userNFTs[index].selected) {
+                                setSelectedNFT({ index, ...nftsCopy[index] });
+                              } else {
+                                setSelectedNFT(null);
+                              }
                               setUserNFTs(nftsCopy);
                             }
                           }}
@@ -314,7 +320,7 @@ const SyntheticFractionalise = ({ goBack, isSynthetic = false }) => {
                         minValue={0}
                         required
                         type="number"
-                        onInputValueChange={e => setInitialPrice(e.target.value.replace('-', ''))}
+                        onInputValueChange={e => setInitialPrice(e.target.value.replace("-", ""))}
                         theme="light"
                       />
                     </Grid>
@@ -366,40 +372,6 @@ const SyntheticFractionalise = ({ goBack, isSynthetic = false }) => {
               <StyledDivider type="solid" color={Color.GrayLight} margin={2} />
               <div className={classes.detailsLabel}>NFT Fractions details</div>
               <Grid container spacing={2} style={{ display: "flex", alignItems: "flex-end" }}>
-                {/* <Grid item xs={12} md={6}>
-                  <InputWithLabelAndTooltip
-                    labelName="Name"
-                    inputValue={name}
-                    placeHolder={"Name..."}
-                    required
-                    type="text"
-                    onInputValueChange={e => setName(e.target.value)}
-                    theme="light"
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <label>Blockchain</label>
-                  <Dropdown
-                    value={selectedChain.value}
-                    menuList={filteredBlockchainNets}
-                    onChange={e => {
-                      setPrevSelectedChain(selectedChain);
-                      setSelectedChain(filteredBlockchainNets.find(c => c.value === e.target.value));
-                    }}
-                    hasImage
-                  />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                  <InputWithLabelAndTooltip
-                    labelName="Symbol"
-                    inputValue={symbol}
-                    placeHolder={"Symbol..."}
-                    required
-                    type="text"
-                    onInputValueChange={e => setSymbol(e.target.value)}
-                    theme="light"
-                  />
-                </Grid>*/}
                 <Grid item xs={12} md={12}>
                   <InputWithLabelAndTooltip
                     labelName="Initial Fraction Price (USD)"
@@ -422,20 +394,6 @@ const SyntheticFractionalise = ({ goBack, isSynthetic = false }) => {
                     theme="light"
                   />
                 </Grid>
-
-                {/* <Grid item xs={12} md={12}>
-                  <div className={classes.label}>Minimum Unlocking Date</div>
-                  <DateInput
-                    minDate={new Date()}
-                    format="MM.dd.yyyy"
-                    value={minUnlockingDate}
-                    onChange={e => {
-                      setMinUnlockingDate(e);
-                    }}
-                  />
-                </Grid>
-                <Box className={classes.description}>Early withdrawal will have a penalty</Box>
-                */}
                 <Grid item xs={12} md={12}>
                   <Box className={classes.borderBox}>
                     A Synthetic NFT will be received when the NFT gets locked and validated.
@@ -458,8 +416,8 @@ const SyntheticFractionalise = ({ goBack, isSynthetic = false }) => {
           onClose={fractionaliseClose}
           onSuccess={fractionaliseSuccess}
           onComplete={() => {
-            fractionaliseClose()
-            goBack()
+            fractionaliseClose();
+            goBack();
           }}
           selectedNFT={selectedNFT}
           supplyToKeep={supply}
